@@ -78,9 +78,9 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[b]CONTROLS:[/b]
 
-[color=cyan]• D-Pad (Left Panel):[/color] Move block in four directions
-[color=cyan]• Rotate Buttons (Left Panel):[/color] Rotate block left or right
-[color=cyan]• Drop Button (Left Panel):[/color] Quick drop to destination
+[color=cyan]• D-Pad (Left Panel):[/color] Move block in four directions (up, down, left, right)
+[color=lime]• Rotate Buttons (Right Panel):[/color] Rotate block left or right
+[color=yellow]• Drop Button (Right Panel):[/color] Quick drop to destination
 
 [color=yellow]Touch Controls:[/color]
 • Swipe Left/Right: Move block horizontally
