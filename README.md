@@ -14,10 +14,11 @@ A Tetris-style puzzle game with procedural folk music, featuring blocks that can
 ```
 tretris/
 ├── tretris.py          # Original Python/Pygame version
-├── godot-ios/          # Godot 4.x web export version
+├── godot-ios/          # Godot 4.x project source
 │   ├── project.godot
 │   ├── scripts/        # GDScript game logic
 │   └── scenes/         # Game scenes
+├── web-build/          # Pre-built web export (HTML5)
 └── swift-ios/          # (Experimental) Swift/iOS native version
 ```
 
@@ -39,10 +40,45 @@ python tretris.py
 ### Web/Mobile (Godot)
 The game is deployed as a PWA at: https://afotav-ship-it.github.io/tretris-game/
 
-To build locally:
-1. Open `godot-ios/` in Godot 4.x
-2. Export as Web
-3. Deploy to web server
+#### Playing the Pre-built Web Version Locally
+
+A pre-built web export is available in the `web-build/` directory. To run it:
+
+```bash
+cd web-build
+python3 -m http.server 8000
+# Then open http://localhost:8000/index.html in your browser
+```
+
+**Browser Requirements:**
+- Chrome/Edge 90+, Firefox 88+, Safari 14.1+, or Opera 76+
+- WebAssembly and WebGL support required
+- Works on desktop and mobile devices
+
+See `web-build/README.md` for detailed deployment and compatibility information.
+
+#### Building from Source
+
+To rebuild the web export from the Godot project:
+
+**Requirements:**
+- Godot 4.3+ (download from https://godotengine.org/download)
+- Web export templates for Godot 4.3
+
+**Steps:**
+1. Download and install Godot 4.3 or newer
+2. Install web export templates (Editor > Manage Export Templates)
+3. Open the `godot-ios/` project in Godot
+4. Go to Project > Export
+5. Select "Web" preset (or add if not present)
+6. Click "Export Project" and choose output location
+7. Serve the exported files via HTTP server (see above)
+
+**Command-line export:**
+```bash
+# Using Godot headless
+godot --headless --export-release "Web" output/index.html
+```
 
 ## Controls
 
