@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://game_scene"]
+[gd_scene load_steps=8 format=3 uid="uid://game_scene"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="2_ui"]
@@ -11,6 +11,36 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_dpad"]
+bg_color = Color(0.25, 0.45, 0.75, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_rotate"]
+bg_color = Color(0.3, 0.65, 0.9, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_drop"]
+bg_color = Color(0.9, 0.7, 0.2, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 4
+shadow_offset = Vector2(0, 3)
 
 [node name="Main" type="Node2D"]
 
@@ -59,7 +89,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(130, 95)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_dpad")
 text = "UP"
 
 [node name="MoveRow" type="HBoxContainer" parent="UI/ControlPanel/VBox"]
@@ -70,7 +102,9 @@ alignment = 1
 [node name="BtnMoveLeft" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
 custom_minimum_size = Vector2(95, 95)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_dpad")
 text = "<"
 
 [node name="Spacer" type="Control" parent="UI/ControlPanel/VBox/MoveRow"]
@@ -80,14 +114,18 @@ layout_mode = 2
 [node name="BtnMoveRight" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
 custom_minimum_size = Vector2(95, 95)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_dpad")
 text = ">"
 
 [node name="BtnMoveDown" type="Button" parent="UI/ControlPanel/VBox"]
 custom_minimum_size = Vector2(130, 95)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_dpad")
 text = "DOWN"
 
 [node name="MenuPanel" type="Panel" parent="UI"]
@@ -250,8 +288,9 @@ alignment = 1
 [node name="BtnRotateLeft" type="Button" parent="UI/MenuPanel/VBox/RotateRow"]
 custom_minimum_size = Vector2(120, 85)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_rotate")
 text = "⟲ ROT"
 
 [node name="Spacer" type="Control" parent="UI/MenuPanel/VBox/RotateRow"]
@@ -261,8 +300,9 @@ layout_mode = 2
 [node name="BtnRotateRight" type="Button" parent="UI/MenuPanel/VBox/RotateRow"]
 custom_minimum_size = Vector2(120, 85)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_rotate")
 text = "ROT ⟳"
 
 [node name="Spacer5c" type="Control" parent="UI/MenuPanel/VBox"]
@@ -273,8 +313,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(250, 95)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_font_sizes/font_size = 28
-theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_drop")
 text = "⬇ DROP ⬇"
 
 [node name="BtnDrop" type="Button" parent="UI/MenuPanel/VBox"]
