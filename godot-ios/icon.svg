@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128">
+  <rect width="128" height="128" fill="#1a1a2e"/>
+  <rect x="20" y="20" width="30" height="30" fill="#ff6b6b"/>
+  <rect x="50" y="20" width="30" height="30" fill="#4ecdc4"/>
+  <rect x="20" y="50" width="30" height="30" fill="#4ecdc4"/>
+  <rect x="50" y="50" width="30" height="30" fill="#ff6b6b"/>
+  <rect x="80" y="50" width="30" height="30" fill="#ffe66d"/>
+  <rect x="50" y="80" width="30" height="30" fill="#ffe66d"/>
+  <text x="64" y="115" font-size="16" fill="white" text-anchor="middle" font-family="Arial Black">TRETRIS</text>
+</svg>

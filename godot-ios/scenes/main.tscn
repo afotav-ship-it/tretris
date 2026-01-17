@@ -1,0 +1,366 @@
+[gd_scene load_steps=5 format=3 uid="uid://main_scene"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="2_ui"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_placeholder"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_preview"]
+bg_color = Color(0.08, 0.08, 0.12, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Main" type="Node2D"]
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource("1_game")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Game"]
+stream = SubResource("AudioStreamWAV_placeholder")
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="Game"]
+stream = SubResource("AudioStreamWAV_placeholder")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ui")
+
+[node name="ControlPanel" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(280, 720)
+offset_right = 280.0
+offset_bottom = 720.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/ControlPanel"]
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 260.0
+offset_bottom = 600.0
+alignment = 1
+
+[node name="DPadLabel" type="Label" parent="UI/ControlPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "CONTROLS"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="UI/ControlPanel/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="BtnMoveUp" type="Button" parent="UI/ControlPanel/VBox"]
+custom_minimum_size = Vector2(110, 77)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "UP"
+
+[node name="MoveRow" type="HBoxContainer" parent="UI/ControlPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="BtnMoveLeft" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
+custom_minimum_size = Vector2(82, 77)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "<"
+
+[node name="BtnDropCtrl" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
+custom_minimum_size = Vector2(82, 77)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "DROP"
+
+[node name="BtnMoveRight" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
+custom_minimum_size = Vector2(82, 77)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = ">"
+
+[node name="BtnMoveDown" type="Button" parent="UI/ControlPanel/VBox"]
+custom_minimum_size = Vector2(110, 77)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "DOWN"
+
+[node name="Spacer2" type="Control" parent="UI/ControlPanel/VBox"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="RotateRow" type="HBoxContainer" parent="UI/ControlPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="BtnRotateLeft" type="Button" parent="UI/ControlPanel/VBox/RotateRow"]
+custom_minimum_size = Vector2(121, 66)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "ROT <"
+
+[node name="BtnRotateRight" type="Button" parent="UI/ControlPanel/VBox/RotateRow"]
+custom_minimum_size = Vector2(121, 66)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "> ROT"
+
+[node name="MenuPanel" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(280, 720)
+offset_left = 1000.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/MenuPanel"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 270.0
+offset_bottom = 710.0
+
+[node name="ScoreLabel" type="Label" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="LinesLabel" type="Label" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Lines: 0"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Level: 1"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="NextLabel" type="Label" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Next:"
+horizontal_alignment = 1
+
+[node name="NextBlockPanel" type="Panel" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_preview")
+
+[node name="Spacer2" type="Control" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="DirLabel" type="Label" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Directions:"
+horizontal_alignment = 1
+
+[node name="DirectionGrid" type="GridContainer" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="BtnNorth" type="Button" parent="UI/MenuPanel/VBox/DirectionGrid"]
+custom_minimum_size = Vector2(125, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "N ^"
+
+[node name="BtnSouth" type="Button" parent="UI/MenuPanel/VBox/DirectionGrid"]
+custom_minimum_size = Vector2(125, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "S v"
+
+[node name="BtnWest" type="Button" parent="UI/MenuPanel/VBox/DirectionGrid"]
+custom_minimum_size = Vector2(125, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "< W"
+
+[node name="BtnEast" type="Button" parent="UI/MenuPanel/VBox/DirectionGrid"]
+custom_minimum_size = Vector2(125, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "E >"
+
+[node name="Spacer3" type="Control" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="ModeLabel" type="Label" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Game Mode:"
+horizontal_alignment = 1
+
+[node name="ModeBox" type="VBoxContainer" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BtnNormal" type="Button" parent="UI/MenuPanel/VBox/ModeBox"]
+custom_minimum_size = Vector2(250, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "NORMAL"
+
+[node name="BtnAdvanced" type="Button" parent="UI/MenuPanel/VBox/ModeBox"]
+custom_minimum_size = Vector2(250, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "ADVANCED"
+
+[node name="BtnBoulder" type="Button" parent="UI/MenuPanel/VBox/ModeBox"]
+custom_minimum_size = Vector2(250, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "BOULDER"
+
+[node name="Spacer4" type="Control" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="ControlBox" type="HBoxContainer" parent="UI/MenuPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BtnMusic" type="Button" parent="UI/MenuPanel/VBox/ControlBox"]
+custom_minimum_size = Vector2(125, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Music ON"
+
+[node name="BtnFX" type="Button" parent="UI/MenuPanel/VBox/ControlBox"]
+custom_minimum_size = Vector2(125, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "FX ON"
+
+[node name="Spacer5" type="Control" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="BtnDrop" type="Button" parent="UI/MenuPanel/VBox"]
+visible = false
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "DROP ⬇"
+
+[node name="BtnSwitch" type="Button" parent="UI/MenuPanel/VBox"]
+visible = false
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "< Menu"
+
+[node name="Spacer6" type="Control" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="BtnExit" type="Button" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "EXIT"
+
+[node name="GameOverOverlay" type="ColorRect" parent="."]
+visible = false
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0, 0, 0, 0.8)
+
+[node name="VBox" type="VBoxContainer" parent="GameOverOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -120.0
+offset_right = 150.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="GameOverOverlay/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="GameOverOverlay/VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BtnPlayAgain" type="Button" parent="GameOverOverlay/VBox"]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "PLAY AGAIN"
+
+[node name="Spacer2" type="Control" parent="GameOverOverlay/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="BtnExitGame" type="Button" parent="GameOverOverlay/VBox"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "EXIT"
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="PauseLabel" type="Label" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -30.0
+offset_right = 80.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="game_over_signal" from="Game" to="UI" method="_on_game_over"]

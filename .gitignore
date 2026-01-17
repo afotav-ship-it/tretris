@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Godot
+.godot/
+*.import
+export_presets.cfg
+
+# Build outputs
+/tmp/
+*.tmp
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Swift/iOS build
+swift-ios/build/
+swift-ios/.build/
+*.xcuserstate
+DerivedData/
+# Exclude build/export folders
+godot-ios/build/
+godot-ios/export/
+*.zip
