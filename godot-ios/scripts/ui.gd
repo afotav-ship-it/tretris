@@ -39,9 +39,9 @@ signal menu_side_changed(is_right: bool)
 @onready var btn_move_down: Button = $ControlPanel/VBox/BtnMoveDown
 @onready var btn_move_left: Button = $ControlPanel/VBox/MoveRow/BtnMoveLeft
 @onready var btn_move_right: Button = $ControlPanel/VBox/MoveRow/BtnMoveRight
-@ontml:parameter name="btn_drop_ctrl: Button = $ControlPanel/VBox/BtnDropCtrl
-@onready var btn_rotate_left: Button = $ControlPanel/VBox/RotateRow/BtnRotateLeft
-@onready var btn_rotate_right: Button = $ControlPanel/VBox/RotateRow/BtnRotateRight
+@onready var btn_drop_ctrl: Button = $MenuPanel/VBox/BtnDropCtrl
+@onready var btn_rotate_left: Button = $MenuPanel/VBox/RotateRow/BtnRotateLeft
+@onready var btn_rotate_right: Button = $MenuPanel/VBox/RotateRow/BtnRotateRight
 
 # Game over overlay
 @onready var game_over_overlay: ColorRect = $"../GameOverOverlay"
@@ -251,18 +251,8 @@ func _draw_thick_line_on_image(img: Image, from: Vector2, to: Vector2, color: Co
 
 
 func _apply_button_icons() -> void:
-	# Apply icons to control panel buttons with centered alignment
-	var buttons := [btn_move_up, btn_move_down, btn_move_left, btn_move_right, 
-					btn_drop_ctrl, btn_rotate_left, btn_rotate_right]
-	var icons := [icon_up, icon_down, icon_left, icon_right, 
-				  icon_drop, icon_rotate_left, icon_rotate_right]
-	
-	for i in range(buttons.size()):
-		var btn: Button = buttons[i]
-		btn.icon = icons[i]
-		btn.text = ""
-		btn.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		btn.expand_icon = true
+	# Icons disabled - using text labels for better visibility
+	pass
 
 
 func _setup_buttons() -> void:
