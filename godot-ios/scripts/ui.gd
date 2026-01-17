@@ -39,7 +39,7 @@ signal menu_side_changed(is_right: bool)
 @onready var btn_move_down: Button = $ControlPanel/VBox/BtnMoveDown
 @onready var btn_move_left: Button = $ControlPanel/VBox/MoveRow/BtnMoveLeft
 @onready var btn_move_right: Button = $ControlPanel/VBox/MoveRow/BtnMoveRight
-@onready var btn_drop_ctrl: Button = $ControlPanel/VBox/MoveRow/BtnDropCtrl
+@ontml:parameter name="btn_drop_ctrl: Button = $ControlPanel/VBox/BtnDropCtrl
 @onready var btn_rotate_left: Button = $ControlPanel/VBox/RotateRow/BtnRotateLeft
 @onready var btn_rotate_right: Button = $ControlPanel/VBox/RotateRow/BtnRotateRight
 
@@ -484,13 +484,8 @@ func _on_rotate_right_pressed() -> void:
 
 
 func _on_exit_pressed() -> void:
-	# On web, just restart the game instead of trying to quit
-	if OS.has_feature("web"):
-		if game:
-			game.reset_game()
-		return
-	
-	get_tree().quit()
+	# Navigate back to main menu
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	emit_signal("exit_pressed")
 
 

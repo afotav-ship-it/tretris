@@ -1,0 +1,171 @@
+[gd_scene load_steps=3 format=3 uid="uid://game_modes_scene"]
+
+[ext_resource type="Script" path="res://scripts/game_modes.gd" id="1_modes"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.6, 0.9, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[node name="GameModes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_modes")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "SELECT GAME MODE"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="NormalMode" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="BtnNormal" type="Button" parent="VBox/NormalMode"]
+custom_minimum_size = Vector2(500, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "NORMAL MODE"
+
+[node name="Description" type="Label" parent="VBox/NormalMode"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 16
+text = "Standard gameplay with 3-4 cell blocks"
+horizontal_alignment = 1
+
+[node name="AdvancedMode" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="BtnAdvanced" type="Button" parent="VBox/AdvancedMode"]
+custom_minimum_size = Vector2(500, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "ADVANCED MODE"
+
+[node name="Description" type="Label" parent="VBox/AdvancedMode"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 16
+text = "Challenging gameplay with 3-6 cell blocks, max 4x4 size"
+horizontal_alignment = 1
+
+[node name="BoulderMode" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="BtnBoulder" type="Button" parent="VBox/BoulderMode"]
+custom_minimum_size = Vector2(500, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "BOULDER MODE"
+
+[node name="Description" type="Label" parent="VBox/BoulderMode"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 16
+text = "Extreme gameplay with 4-9 cell blocks, 2x2 to 3x3 size"
+horizontal_alignment = 1
+
+[node name="DirectionsSection" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DirectionsLabel" type="Label" parent="VBox/DirectionsSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 20
+text = "Block Directions"
+horizontal_alignment = 1
+
+[node name="DirectionGrid" type="GridContainer" parent="VBox/DirectionsSection"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="BtnNorth" type="Button" parent="VBox/DirectionsSection/DirectionGrid"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "↑ NORTH"
+
+[node name="BtnSouth" type="Button" parent="VBox/DirectionsSection/DirectionGrid"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "↓ SOUTH"
+
+[node name="BtnWest" type="Button" parent="VBox/DirectionsSection/DirectionGrid"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "← WEST"
+
+[node name="BtnEast" type="Button" parent="VBox/DirectionsSection/DirectionGrid"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "→ EAST"
+
+[node name="Spacer2" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BtnBack" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "← BACK TO MENU"

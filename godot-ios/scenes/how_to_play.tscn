@@ -1,0 +1,138 @@
+[gd_scene load_steps=3 format=3 uid="uid://how_to_play_scene"]
+
+[ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_help"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.6, 0.9, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_help")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -320.0
+offset_right = 500.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="ScrollContainer/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Objective" type="RichTextLabel" parent="ScrollContainer/VBox"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[b]OBJECTIVE:[/b]
+Clear lines by filling complete rows or columns. Blocks fall in multiple directions (N, S, E, W) and collapse accordingly when lines are cleared."
+
+[node name="Controls" type="RichTextLabel" parent="ScrollContainer/VBox"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[b]CONTROLS:[/b]
+
+[color=cyan]• D-Pad (Left Panel):[/color] Move block in four directions
+[color=cyan]• Rotate Buttons (Left Panel):[/color] Rotate block left or right
+[color=cyan]• Drop Button (Left Panel):[/color] Quick drop to destination
+
+[color=yellow]Touch Controls:[/color]
+• Swipe Left/Right: Move block horizontally
+• Swipe Down: Speed up block descent
+• Swipe Up: Move block up (for upward-falling blocks)
+• Tap: Rotate block clockwise"
+
+[node name="Gameplay" type="RichTextLabel" parent="ScrollContainer/VBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[b]GAMEPLAY:[/b]
+
+[color=lime]• Game Modes:[/color] Choose from Normal, Advanced, or Boulder modes
+[color=lime]• Directions:[/color] Enable/disable block falling directions (N, S, E, W)
+[color=lime]• Line Clearing:[/color] Complete horizontal rows or vertical columns
+[color=lime]• Scoring:[/color] Exponential scoring for multiple lines cleared at once
+[color=lime]• Levels:[/color] Game speeds up every 5 lines cleared"
+
+[node name="Tips" type="RichTextLabel" parent="ScrollContainer/VBox"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[b]TIPS:[/b]
+
+[color=yellow]• Preview Next Block:[/color] Check the right panel for upcoming block
+[color=yellow]• Ghost Block:[/color] Dotted outline shows where block will land
+[color=yellow]• Multi-Direction:[/color] Blocks collapse in enabled directions after clearing
+[color=yellow]• Strategy:[/color] Plan ahead for multi-line clears for higher scores"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BtnBack" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "← BACK TO MENU"

@@ -70,6 +70,12 @@ func _ready() -> void:
 	music_player.volume_db = 0
 	sfx_player.volume_db = 0
 	
+	# Load settings from GameSettings
+	play_level = GameSettings.play_level
+	enabled_directions = GameSettings.enabled_directions.duplicate()
+	music_enabled = GameSettings.music_enabled
+	effects_enabled = GameSettings.effects_enabled
+	
 	_pregenerate_sounds()
 	reset_game()
 	queue_redraw()
