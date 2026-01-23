@@ -86,9 +86,10 @@ func _ready() -> void:
 	menu_panel.visible = false
 	menu_instance = MenuScene.instantiate()
 	add_child(menu_instance)
-	menu_instance.start_pressed.connect(_on_start_pressed)
-	menu_instance.mode_selected.connect(_on_menu_mode_selected)
-	menu_instance.exit_pressed.connect(_on_menu_exit_pressed)
+	# Use connect() to bind signals in case the script is not yet exposed as properties
+	menu_instance.connect("start_pressed", Callable(self, "_on_start_pressed"))
+	menu_instance.connect("mode_selected", Callable(self, "_on_menu_mode_selected"))
+	menu_instance.connect("exit_pressed", Callable(self, "_on_menu_exit_pressed"))
 	menu_instance.visible = true
 	if game:
 		game.reset_game()  # ensure consistent state until user starts
