@@ -514,6 +514,18 @@ func _on_play_again_pressed() -> void:
 	menu_panel.visible = true
 
 
+func _on_start_pressed() -> void:
+	# Start the game from the main menu
+	menu_panel.visible = false
+	game_over_overlay.visible = false
+	# Ensure game is in a reset state and start
+	if game:
+		game.reset_game()
+		# give focus to game node if needed
+		if has_node("../Game"):
+			get_node("../Game").grab_focus()
+
+
 func _process(_delta: float) -> void:
 	queue_redraw()
 
