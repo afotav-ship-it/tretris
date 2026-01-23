@@ -72,6 +72,9 @@ var icon_drop: ImageTexture
 var icon_rotate_left: ImageTexture
 var icon_rotate_right: ImageTexture
 
+var MenuScene = preload("res://scenes/menu.tscn")
+var menu_instance: Control = null
+
 
 func _ready() -> void:
 	_create_icon_textures()
@@ -79,8 +82,14 @@ func _ready() -> void:
 	_apply_button_icons()
 	_update_menu_position()
 
-	# Show the main menu on startup
-	menu_panel.visible = true
+	# Instantiate and show the main menu on startup; hide in-game menu
+	menu_panel.visible = false
+	menu_instance = MenuScene.instantiate()
+	add_child(menu_instance)
+	menu_instance.start_pressed.connect(_on_start_pressed)
+	menu_instance.mode_selected.connect(_on_menu_mode_selected)
+	menu_instance.exit_pressed.connect(_on_menu_exit_pressed)
+	menu_instance.visible = true
 	if game:
 		game.reset_game()  # ensure consistent state until user starts
 	
@@ -511,19 +520,39 @@ func _on_game_over() -> void:
 func _on_play_again_pressed() -> void:
 	# Return to main menu so player can select mode or play
 	game_over_overlay.visible = false
-	menu_panel.visible = true
+	if menu_instance:
+		menu_instance.visible = true
 
 
 func _on_start_pressed() -> void:
 	# Start the game from the main menu
-	menu_panel.visible = false
+	if menu_instance:
+		menu_instance.visible = false
+	menu_panel.visible = true
 	game_over_overlay.visible = false
 	# Ensure game is in a reset state and start
 	if game:
 		game.reset_game()
-		# give focus to game node if needed
 		if has_node("../Game"):
 			get_node("../Game").grab_focus()
+
+
+func _on_menu_mode_selected(mode: int) -> void:
+	# Mode selected from main menu; apply to game
+	if game:
+		game.play_level = mode
+		game.reset_game()
+	_update_mode_buttons()
+
+
+func _on_menu_exit_pressed() -> void:
+	# Exit from main menu — quit on desktop, no-op on web
+	if OS.has_feature("web"):
+		# On web, just hide menu and do nothing
+		if menu_instance:
+			menu_instance.visible = false
+		return
+	get_tree().quit()
 
 
 func _process(_delta: float) -> void:

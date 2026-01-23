@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://menu_scene"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+
+[node name="Background" type="ColorRect" parent="MainMenu"]
+anchors_preset = 15
+color = Color(0, 0, 0, 0.6)
+
+[node name="VBox" type="VBoxContainer" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -180.0
+offset_right = 200.0
+offset_bottom = 180.0
+alignment = 1
+
+[node name="Title" type="Label" parent="MainMenu/VBox"]
+theme_override_font_sizes/font_size = 36
+text = "TRETRIS"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MainMenu/VBox"]
+custom_minimum_size = Vector2(0, 10)
+
+[node name="ModeBox" type="VBoxContainer" parent="MainMenu/VBox"]
+size_flags_horizontal = 4
+
+[node name="BtnMenuNormal" type="Button" parent="MainMenu/VBox/ModeBox"]
+custom_minimum_size = Vector2(360, 56)
+text = "NORMAL"
+
+[node name="BtnMenuAdvanced" type="Button" parent="MainMenu/VBox/ModeBox"]
+custom_minimum_size = Vector2(360, 56)
+text = "ADVANCED"
+
+[node name="BtnMenuBoulder" type="Button" parent="MainMenu/VBox/ModeBox"]
+custom_minimum_size = Vector2(360, 56)
+text = "BOULDER"
+
+[node name="Spacer2" type="Control" parent="MainMenu/VBox"]
+custom_minimum_size = Vector2(0, 12)
+
+[node name="BtnMenuPlay" type="Button" parent="MainMenu/VBox"]
+custom_minimum_size = Vector2(360, 72)
+theme_override_font_sizes/font_size = 24
+text = "PLAY"
+
+[node name="Spacer3" type="Control" parent="MainMenu/VBox"]
+custom_minimum_size = Vector2(0, 12)
+
+[node name="BtnMenuExit" type="Button" parent="MainMenu/VBox"]
+custom_minimum_size = Vector2(360, 56)
+text = "EXIT"

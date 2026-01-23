@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://main_scene"]
+[gd_scene load_steps=5 format=3 uid="uid://dhaqqbyc66w60"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
-[ext_resource type="Script" path="res://scripts/ui.gd" id="2_ui"]
+[ext_resource type="Script" uid="uid://s6g34n11u0b" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="Script" uid="uid://b3ah2kuggkpii" path="res://scripts/ui.gd" id="2_ui"]
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_placeholder"]
 
@@ -34,10 +34,12 @@ script = ExtResource("2_ui")
 
 [node name="ControlPanel" type="Panel" parent="UI"]
 custom_minimum_size = Vector2(280, 720)
+layout_mode = 0
 offset_right = 280.0
 offset_bottom = 720.0
 
 [node name="VBox" type="VBoxContainer" parent="UI/ControlPanel"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 120.0
 offset_right = 260.0
@@ -114,11 +116,13 @@ text = "> ROT"
 
 [node name="MenuPanel" type="Panel" parent="UI"]
 custom_minimum_size = Vector2(280, 720)
+layout_mode = 0
 offset_left = 1000.0
 offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="VBox" type="VBoxContainer" parent="UI/MenuPanel"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 270.0
@@ -134,9 +138,9 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(260, 80)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 1
 theme_override_font_sizes/font_size = 28
 text = "PLAY"
-focus_mode = 1
 
 [node name="LinesLabel" type="Label" parent="UI/MenuPanel/VBox"]
 layout_mode = 2
@@ -218,6 +222,7 @@ horizontal_alignment = 1
 [node name="ModeBox" type="VBoxContainer" parent="UI/MenuPanel/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
+visible = false
 
 [node name="BtnNormal" type="Button" parent="UI/MenuPanel/VBox/ModeBox"]
 custom_minimum_size = Vector2(250, 35)
@@ -296,7 +301,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 color = Color(0, 0, 0, 0.8)
 
 [node name="VBox" type="VBoxContainer" parent="GameOverOverlay"]
