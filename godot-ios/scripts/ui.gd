@@ -47,6 +47,7 @@ signal menu_side_changed(is_right: bool)
 @onready var game_over_overlay: ColorRect = $"../GameOverOverlay"
 @onready var btn_play_again: Button = $"../GameOverOverlay/VBox/BtnPlayAgain"
 @onready var btn_exit_game: Button = $"../GameOverOverlay/VBox/BtnExitGame"
+@onready var btn_start: Button = $"MenuPanel/VBox/BtnStart"
 
 var menu_on_right: bool = true
 # Active directions: maps Direction enum to enabled state
@@ -77,6 +78,11 @@ func _ready() -> void:
 	_setup_buttons()
 	_apply_button_icons()
 	_update_menu_position()
+
+	# Show the main menu on startup
+	menu_panel.visible = true
+	if game:
+		game.reset_game()  # ensure consistent state until user starts
 	
 	if game:
 		game.score_changed.connect(_on_score_changed)
@@ -287,6 +293,8 @@ func _setup_buttons() -> void:
 	# Play again button
 	btn_play_again.pressed.connect(_on_play_again_pressed)
 	btn_exit_game.pressed.connect(_on_exit_pressed)
+	# Start button (main menu)
+	btn_start.pressed.connect(_on_start_pressed)
 	
 	# Control panel buttons (d-pad)
 	btn_move_up.pressed.connect(_on_move_up_pressed)
@@ -484,26 +492,26 @@ func _on_rotate_right_pressed() -> void:
 
 
 func _on_exit_pressed() -> void:
-	# On web, just restart the game instead of trying to quit
-	if OS.has_feature("web"):
-		if game:
-			game.reset_game()
-		return
-	
-	get_tree().quit()
+	# Instead of quitting, return to main menu so user can choose mode or exit
+	menu_panel.visible = true
+	game_over_overlay.visible = false
+	# Optionally reset game state but do not quit
+	if game:
+		game.reset_game()
 	emit_signal("exit_pressed")
 
 
 func _on_game_over() -> void:
 	# Show game over overlay
 	game_over_overlay.visible = true
+	# show menu so player can choose to return/home
+	menu_panel.visible = true
 
 
 func _on_play_again_pressed() -> void:
-	# Hide overlay and restart game
+	# Return to main menu so player can select mode or play
 	game_over_overlay.visible = false
-	if game:
-		game.reset_game()
+	menu_panel.visible = true
 
 
 func _process(_delta: float) -> void:

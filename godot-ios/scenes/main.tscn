@@ -55,7 +55,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="BtnMoveUp" type="Button" parent="UI/ControlPanel/VBox"]
-custom_minimum_size = Vector2(110, 77)
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
@@ -67,25 +67,25 @@ size_flags_horizontal = 4
 alignment = 1
 
 [node name="BtnMoveLeft" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
-custom_minimum_size = Vector2(82, 77)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "<"
 
 [node name="BtnDropCtrl" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
-custom_minimum_size = Vector2(82, 77)
+custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "DROP"
 
 [node name="BtnMoveRight" type="Button" parent="UI/ControlPanel/VBox/MoveRow"]
-custom_minimum_size = Vector2(82, 77)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = ">"
 
 [node name="BtnMoveDown" type="Button" parent="UI/ControlPanel/VBox"]
-custom_minimum_size = Vector2(110, 77)
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
@@ -101,13 +101,13 @@ size_flags_horizontal = 4
 alignment = 1
 
 [node name="BtnRotateLeft" type="Button" parent="UI/ControlPanel/VBox/RotateRow"]
-custom_minimum_size = Vector2(121, 66)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "ROT <"
 
 [node name="BtnRotateRight" type="Button" parent="UI/ControlPanel/VBox/RotateRow"]
-custom_minimum_size = Vector2(121, 66)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "> ROT"
@@ -129,6 +129,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Score: 0"
 horizontal_alignment = 1
+
+[node name="BtnStart" type="Button" parent="UI/MenuPanel/VBox"]
+custom_minimum_size = Vector2(260, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "PLAY"
+focus_mode = 1
 
 [node name="LinesLabel" type="Label" parent="UI/MenuPanel/VBox"]
 layout_mode = 2
